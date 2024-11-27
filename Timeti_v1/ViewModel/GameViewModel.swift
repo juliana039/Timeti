@@ -7,44 +7,52 @@
 
 import SwiftUI
 
-
 class GameViewModel: ObservableObject {
-    @Published var cards: [CardModel] = []
-    @Published var currentCards: [CardModel] = []
-    @Published var leftScore: Int = 0
-    @Published var rightScore: Int = 0
-    @Published var gameFinished: Bool = false
+    @Published var cards: [CardModel] = []  // Lista de todas as cartas carregadas
+    @Published var currentCards: [CardModel] = []  // Duas cartas ativas
+    @Published var deck: [CardModel] = []  // Baralho embaralhado
+    @Published var leftScore: Int = 0  // Placar do lado esquerdo
+    @Published var rightScore: Int = 0  // Placar do lado direito
+    @Published var gameFinished: Bool = false  // Indica se o jogo terminou
     
     init() {
-        loadCards()
-        drawNewCards()
+        startNewGame()  // Inicia um novo jogo ao carregar o ViewModel
     }
     
     private func loadCards() {
-        let cardData = loadCardsData()
+        let cardData = loadCardsData()  // Carrega as 57 cartas do JSON
         cards = cardData.map { linha in
             CardModel(images: linha.map { "\($0)" })
         }
     }
     
+    private func shuffleDeck() {
+        deck = cards.shuffled()  // Embaralha todas as 57 cartas
+    }
+    
+    func startNewGame() {
+        loadCards()  // Carrega as cartas novamente
+        shuffleDeck()  // Embaralha o baralho
+        leftScore = 0  // Reinicia o placar
+        rightScore = 0
+        gameFinished = false
+        drawNewCards()  // Sorteia as primeiras cartas
+    }
+    
     func drawNewCards() {
-        guard cards.count >= 2 else {
-            gameFinished = true
+        guard deck.count >= 2 else {  // Verifica se há pelo menos 2 cartas no baralho
+            gameFinished = true  // Fim do jogo se não houver mais cartas suficientes
             return
         }
         
+        // Sorteia 2 cartas do baralho
         currentCards = []
         for _ in 0..<2 {
-            if let card = cards.randomElement() {
-                currentCards.append(card)
-                cards.removeAll { $0.id == card.id }
-            }
+            currentCards.append(deck.removeFirst())  // Remove a carta do topo do baralho
         }
     }
     
     func flipCurrentCards() {
-        guard !currentCards.isEmpty else { return }  // Certifica que há cartas para virar
-        
         for index in currentCards.indices {
             withAnimation(.easeInOut(duration: 0.5)) {
                 currentCards[index].rotation += 180
@@ -54,7 +62,6 @@ class GameViewModel: ObservableObject {
             }
         }
     }
-
     
     func checkForMatch() -> String? {
         guard currentCards.count == 2 else { return nil }
@@ -62,18 +69,15 @@ class GameViewModel: ObservableObject {
         let card1Images = Set(currentCards[0].images)
         let card2Images = Set(currentCards[1].images)
         
-        // Verifica a interseção entre as duas listas de imagens
-        return card1Images.intersection(card2Images).first
+        return card1Images.intersection(card2Images).first  // Retorna a imagem repetida
     }
     
     func handleTap(on imageName: String, for index: Int) {
-        // Verifica se a imagem clicada é a repetida
         if let matchingImage = checkForMatch(), imageName == matchingImage {
             incrementScore(for: index)
         } else {
-            // Vibra o dispositivo
             let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.error)
+            generator.notificationOccurred(.error)  // Vibração ao clicar na imagem errada
         }
     }
     
@@ -91,6 +95,9 @@ class GameViewModel: ObservableObject {
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            for i in self.currentCards.indices {
+                self.currentCards[i].offsetX = 0
+            }
             self.drawNewCards()
         }
     }

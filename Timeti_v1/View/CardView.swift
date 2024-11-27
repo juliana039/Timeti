@@ -54,6 +54,8 @@ struct CardView: View {
             .degrees(card.rotation),
             axis: (x: 0, y: 1, z: 0)
         )
+        .offset(x: card.offsetX, y: 0)  // Aplica deslocamento horizontal para a animação de saída
+        .animation(.easeInOut(duration: 0.5), value: card.offsetX)  // Anima a mudança de posição
         .frame(width: 250, height: 250)
     }
 }

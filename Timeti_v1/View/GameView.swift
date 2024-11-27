@@ -24,6 +24,18 @@ struct GameView: View {
                         .font(.title2)
                     Text("Esquerda: \(viewModel.leftScore)")
                     Text("Direita: \(viewModel.rightScore)")
+                    
+                    Button(action: {
+                        viewModel.startNewGame()  // Reinicia o jogo
+                    }) {
+                        Text("Jogar Novamente")
+                            .font(.title)
+                            .padding()
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
+                    .padding(.top, 20)
                 }
             } else {
                 VStack {
