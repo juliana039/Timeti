@@ -6,27 +6,8 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXContainerItemProxy section */
-		CDEC85C72CE1962300314C77 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CDEC85AE2CE1962100314C77 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CDEC85B52CE1962100314C77;
-			remoteInfo = Timeti_v1;
-		};
-		CDEC85D12CE1962300314C77 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CDEC85AE2CE1962100314C77 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CDEC85B52CE1962100314C77;
-			remoteInfo = Timeti_v1;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		CDEC85B62CE1962100314C77 /* Timeti_v1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timeti_v1.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CDEC85C62CE1962300314C77 /* Timeti_v1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Timeti_v1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CDEC85D02CE1962300314C77 /* Timeti_v1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Timeti_v1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -35,34 +16,10 @@
 			path = Timeti_v1;
 			sourceTree = "<group>";
 		};
-		CDEC85C92CE1962300314C77 /* Timeti_v1Tests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Timeti_v1Tests;
-			sourceTree = "<group>";
-		};
-		CDEC85D32CE1962300314C77 /* Timeti_v1UITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Timeti_v1UITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		CDEC85B32CE1962100314C77 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CDEC85C32CE1962300314C77 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CDEC85CD2CE1962300314C77 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -76,8 +33,6 @@
 			isa = PBXGroup;
 			children = (
 				CDEC85B82CE1962100314C77 /* Timeti_v1 */,
-				CDEC85C92CE1962300314C77 /* Timeti_v1Tests */,
-				CDEC85D32CE1962300314C77 /* Timeti_v1UITests */,
 				CDEC85B72CE1962100314C77 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -86,8 +41,6 @@
 			isa = PBXGroup;
 			children = (
 				CDEC85B62CE1962100314C77 /* Timeti_v1.app */,
-				CDEC85C62CE1962300314C77 /* Timeti_v1Tests.xctest */,
-				CDEC85D02CE1962300314C77 /* Timeti_v1UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,52 +70,6 @@
 			productReference = CDEC85B62CE1962100314C77 /* Timeti_v1.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CDEC85C52CE1962300314C77 /* Timeti_v1Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CDEC85DD2CE1962300314C77 /* Build configuration list for PBXNativeTarget "Timeti_v1Tests" */;
-			buildPhases = (
-				CDEC85C22CE1962300314C77 /* Sources */,
-				CDEC85C32CE1962300314C77 /* Frameworks */,
-				CDEC85C42CE1962300314C77 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CDEC85C82CE1962300314C77 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				CDEC85C92CE1962300314C77 /* Timeti_v1Tests */,
-			);
-			name = Timeti_v1Tests;
-			packageProductDependencies = (
-			);
-			productName = Timeti_v1Tests;
-			productReference = CDEC85C62CE1962300314C77 /* Timeti_v1Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		CDEC85CF2CE1962300314C77 /* Timeti_v1UITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CDEC85E02CE1962300314C77 /* Build configuration list for PBXNativeTarget "Timeti_v1UITests" */;
-			buildPhases = (
-				CDEC85CC2CE1962300314C77 /* Sources */,
-				CDEC85CD2CE1962300314C77 /* Frameworks */,
-				CDEC85CE2CE1962300314C77 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CDEC85D22CE1962300314C77 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				CDEC85D32CE1962300314C77 /* Timeti_v1UITests */,
-			);
-			name = Timeti_v1UITests;
-			packageProductDependencies = (
-			);
-			productName = Timeti_v1UITests;
-			productReference = CDEC85D02CE1962300314C77 /* Timeti_v1UITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -175,14 +82,6 @@
 				TargetAttributes = {
 					CDEC85B52CE1962100314C77 = {
 						CreatedOnToolsVersion = 16.0;
-					};
-					CDEC85C52CE1962300314C77 = {
-						CreatedOnToolsVersion = 16.0;
-						TestTargetID = CDEC85B52CE1962100314C77;
-					};
-					CDEC85CF2CE1962300314C77 = {
-						CreatedOnToolsVersion = 16.0;
-						TestTargetID = CDEC85B52CE1962100314C77;
 					};
 				};
 			};
@@ -201,28 +100,12 @@
 			projectRoot = "";
 			targets = (
 				CDEC85B52CE1962100314C77 /* Timeti_v1 */,
-				CDEC85C52CE1962300314C77 /* Timeti_v1Tests */,
-				CDEC85CF2CE1962300314C77 /* Timeti_v1UITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CDEC85B42CE1962100314C77 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CDEC85C42CE1962300314C77 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CDEC85CE2CE1962300314C77 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -239,34 +122,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CDEC85C22CE1962300314C77 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CDEC85CC2CE1962300314C77 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		CDEC85C82CE1962300314C77 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CDEC85B52CE1962100314C77 /* Timeti_v1 */;
-			targetProxy = CDEC85C72CE1962300314C77 /* PBXContainerItemProxy */;
-		};
-		CDEC85D22CE1962300314C77 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CDEC85B52CE1962100314C77 /* Timeti_v1 */;
-			targetProxy = CDEC85D12CE1962300314C77 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		CDEC85D82CE1962300314C77 /* Debug */ = {
@@ -395,15 +251,16 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Timeti_v1/Preview Content\"";
 				DEVELOPMENT_TEAM = 2XRKQQ47HM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.7;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*]" = 17.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -424,15 +281,16 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Timeti_v1/Preview Content\"";
 				DEVELOPMENT_TEAM = 2XRKQQ47HM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.7;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*]" = 17.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -443,78 +301,6 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		CDEC85DE2CE1962300314C77 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2XRKQQ47HM;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "tcc2024.Timeti-v1Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Timeti_v1.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Timeti_v1";
-			};
-			name = Debug;
-		};
-		CDEC85DF2CE1962300314C77 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2XRKQQ47HM;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "tcc2024.Timeti-v1Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Timeti_v1.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Timeti_v1";
-			};
-			name = Release;
-		};
-		CDEC85E12CE1962300314C77 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2XRKQQ47HM;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "tcc2024.Timeti-v1UITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Timeti_v1;
-			};
-			name = Debug;
-		};
-		CDEC85E22CE1962300314C77 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2XRKQQ47HM;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "tcc2024.Timeti-v1UITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Timeti_v1;
 			};
 			name = Release;
 		};
@@ -535,24 +321,6 @@
 			buildConfigurations = (
 				CDEC85DB2CE1962300314C77 /* Debug */,
 				CDEC85DC2CE1962300314C77 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CDEC85DD2CE1962300314C77 /* Build configuration list for PBXNativeTarget "Timeti_v1Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CDEC85DE2CE1962300314C77 /* Debug */,
-				CDEC85DF2CE1962300314C77 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CDEC85E02CE1962300314C77 /* Build configuration list for PBXNativeTarget "Timeti_v1UITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CDEC85E12CE1962300314C77 /* Debug */,
-				CDEC85E22CE1962300314C77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
