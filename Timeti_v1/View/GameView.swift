@@ -39,6 +39,7 @@ struct GameView: View {
                 }
             } else {
                 VStack {
+                    // Placar no topo
                     HStack {
                         Text("Placar Esquerda: \(viewModel.leftScore)")
                         Spacer()
@@ -46,21 +47,42 @@ struct GameView: View {
                     }
                     .padding()
                     
-                    HStack(spacing: 40) {
-                        ForEach(0..<viewModel.currentCards.count, id: \.self) { index in
-                            CardView(
-                                card: viewModel.currentCards[index],
-                                index: index,
-                                onImageTap: { imageName, tappedIndex in
-                                    viewModel.handleTap(on: imageName, for: tappedIndex)
-                                },
+                    Spacer()
+                    
+                    // Cartas posicionadas
+                    ZStack {
+                        // Primeira carta (direita)
+                        if viewModel.currentCards.count > 0 {
+                            CircularCardView(
+                                card: viewModel.currentCards[1],
                                 onCardTap: {
                                     viewModel.flipCurrentCards()
+                                },
+                                onImageTap: { imageName in
+                                    viewModel.handleTap(on: imageName, for: 0)
                                 }
                             )
+                            .offset(x: UIScreen.main.bounds.width * 0.25)  // Animação inicial para direita
+                            .animation(.easeInOut(duration: 0.5))  // Animação de entrada
+                        }
+                        
+                        // Segunda carta (esquerda)
+                        if viewModel.currentCards.count > 1 {
+                            CircularCardView(
+                                card: viewModel.currentCards[0],
+                                onCardTap: {
+                                    viewModel.flipCurrentCards()
+                                },
+                                onImageTap: { imageName in
+                                    viewModel.handleTap(on: imageName, for: 1)
+                                }
+                            )
+                            .offset(x: -UIScreen.main.bounds.width * 0.25)  // Animação inicial para esquerda
+                            .animation(.easeInOut(duration: 0.5))  // Animação de entrada
                         }
                     }
-                    .padding()
+                    
+                    Spacer()
                 }
             }
         }

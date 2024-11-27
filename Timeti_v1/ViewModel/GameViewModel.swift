@@ -55,13 +55,18 @@ class GameViewModel: ObservableObject {
     func flipCurrentCards() {
         for index in currentCards.indices {
             withAnimation(.easeInOut(duration: 0.5)) {
-                currentCards[index].rotation += 180
                 currentCards[index].isFlipped.toggle()
-                currentCards[index].frontOpacity = currentCards[index].isFlipped ? 0 : 1
-                currentCards[index].backOpacity = currentCards[index].isFlipped ? 1 : 0
+            }
+            
+            // Atraso para exibir as figuras
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                withAnimation(.easeIn) {
+                    self.currentCards[index].showFigures = true
+                }
             }
         }
     }
+
     
     func checkForMatch() -> String? {
         guard currentCards.count == 2 else { return nil }
@@ -82,23 +87,28 @@ class GameViewModel: ObservableObject {
     }
     
     func incrementScore(for index: Int) {
-        if index == 0 {
-            leftScore += 1
-        } else if index == 1 {
+        if index == 0 {  // Carta da direita
             rightScore += 1
+        } else if index == 1 {  // Carta da esquerda
+            leftScore += 1
         }
         
+        // Anima a saída das cartas
         withAnimation(.easeInOut(duration: 0.5)) {
             for i in currentCards.indices {
-                currentCards[i].offsetX = UIScreen.main.bounds.width * (i == 0 ? -1 : 1) * 1.5
+                currentCards[i].offsetX = UIScreen.main.bounds.width * (i == 0 ? 1 : -1) * 1.5
             }
         }
         
+        // Após a animação, sorteia novas cartas
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
             for i in self.currentCards.indices {
-                self.currentCards[i].offsetX = 0
+                self.currentCards[i].offsetX = 0  // Reseta o offset
             }
             self.drawNewCards()
         }
     }
+
+
+
 }
