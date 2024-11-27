@@ -38,53 +38,68 @@ struct GameView: View {
                     .padding(.top, 20)
                 }
             } else {
-                VStack {
-                    // Placar no topo
-                    HStack {
-                        Text("Placar Esquerda: \(viewModel.leftScore)")
+                ZStack {
+                    VStack {
+                        PlacarView(viewModel: viewModel)
+                            //.padding()
+                            //.padding(.top, 0)
+                            .padding(.horizontal, 10)
+
                         Spacer()
-                        Text("Placar Direita: \(viewModel.rightScore)")
                     }
-                    .padding()
                     
-                    Spacer()
-                    
-                    // Cartas posicionadas
+                    // Cartas posicionadas no centro
                     ZStack {
-                        // Primeira carta (direita)
+                        // Carta da direita
                         if viewModel.currentCards.count > 0 {
-                            CircularCardView(
-                                card: viewModel.currentCards[1],
-                                onCardTap: {
-                                    viewModel.flipCurrentCards()
-                                },
-                                onImageTap: { imageName in
-                                    viewModel.handleTap(on: imageName, for: 0)
-                                }
-                            )
-                            .offset(x: UIScreen.main.bounds.width * 0.25)  // Animação inicial para direita
-                            .animation(.easeInOut(duration: 0.5))  // Animação de entrada
+                            withAnimation(.easeInOut(duration: 0.5)) {
+                                CircularCardView(
+                                    card: viewModel.currentCards[1],
+                                    onCardTap: {
+                                        viewModel.flipCurrentCards()
+                                    },
+                                    onImageTap: { imageName in
+                                        viewModel.handleTap(on: imageName, for: 0)
+                                    }
+                                )
+                                .offset(x: UIScreen.main.bounds.width * 0.25)  // Posiciona à direita
+                            }
                         }
                         
-                        // Segunda carta (esquerda)
+                        // Carta da esquerda
                         if viewModel.currentCards.count > 1 {
-                            CircularCardView(
-                                card: viewModel.currentCards[0],
-                                onCardTap: {
-                                    viewModel.flipCurrentCards()
-                                },
-                                onImageTap: { imageName in
-                                    viewModel.handleTap(on: imageName, for: 1)
-                                }
-                            )
-                            .offset(x: -UIScreen.main.bounds.width * 0.25)  // Animação inicial para esquerda
-                            .animation(.easeInOut(duration: 0.5))  // Animação de entrada
+                            withAnimation(.easeInOut(duration: 0.5)) {
+                                CircularCardView(
+                                    card: viewModel.currentCards[0],
+                                    onCardTap: {
+                                        viewModel.flipCurrentCards()
+                                    },
+                                    onImageTap: { imageName in
+                                        viewModel.handleTap(on: imageName, for: 1)
+                                    }
+                                )
+                                .offset(x: -UIScreen.main.bounds.width * 0.25)  // Posiciona à esquerda
+                            }
                         }
                     }
-                    
-                    Spacer()
                 }
-            }
+
+            }//else
         }
+    }
+}
+
+struct GameView_Previews: PreviewProvider {
+    static var previews: some View {
+        let previewViewModel = GameViewModel()
+        previewViewModel.leftScore = 25
+        previewViewModel.rightScore = 2
+        previewViewModel.currentCards = [
+            CardModel(images: ["1", "2", "3", "4", "5", "6", "7", "8"], isFlipped: true),
+            CardModel(images: ["8", "12", "13", "14", "15", "16", "17", "18"], isFlipped: true)
+        ]
+        
+        return GameView()
+            .environmentObject(previewViewModel) 
     }
 }
