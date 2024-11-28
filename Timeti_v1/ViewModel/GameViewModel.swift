@@ -22,9 +22,10 @@ class GameViewModel: ObservableObject {
     private func loadCards() {
         let cardData = loadCardsData()  // Carrega as 57 cartas do JSON
         cards = cardData.map { linha in
-            CardModel(images: linha.map { "\($0)" })
+            CardModel(images: linha.map { "\($0)" }.shuffled())  // Embaralha as imagens ao criar a carta
         }
     }
+
     
     private func shuffleDeck() {
         deck = cards.shuffled()  // Embaralha todas as 57 cartas
