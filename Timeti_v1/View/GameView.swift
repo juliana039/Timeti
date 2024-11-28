@@ -62,6 +62,8 @@ struct GameView: View {
                                         viewModel.handleTap(on: imageName, for: 0)
                                     }
                                 )
+                                .rotationEffect(.degrees(-90)) // Inclinação de -90 graus para a carta da direita
+
                                 .offset(x: UIScreen.main.bounds.width * 0.25)  // Posiciona à direita
                             }
                         }
@@ -78,6 +80,8 @@ struct GameView: View {
                                         viewModel.handleTap(on: imageName, for: 1)
                                     }
                                 )
+                                .rotationEffect(.degrees(90)) // Inclinação de -90 graus para a carta da direita
+
                                 .offset(x: -UIScreen.main.bounds.width * 0.25)  // Posiciona à esquerda
                             }
                         }

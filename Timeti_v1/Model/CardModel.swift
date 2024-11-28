@@ -16,7 +16,7 @@ struct CardModel: Identifiable, Equatable {
     var frontOpacity: Double = 1.0
     var backOpacity: Double = 0.0
     var rotation: Double = 0.0
-    var offsetX: CGFloat = 0.0  // Para a animação de saída
+    var offsetY: CGFloat = 0.0  
 
     static func == (lhs: CardModel, rhs: CardModel) -> Bool {
         return lhs.id == rhs.id

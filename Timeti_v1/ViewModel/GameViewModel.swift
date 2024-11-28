@@ -60,7 +60,7 @@ class GameViewModel: ObservableObject {
             }
             
             // Atraso para exibir as figuras
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 withAnimation(.easeIn) {
                     self.currentCards[index].showFigures = true
                 }
@@ -94,21 +94,22 @@ class GameViewModel: ObservableObject {
             leftScore += 1
         }
         
-        // Anima a saída das cartas
+        // Anima a saída das cartas para baixo
         withAnimation(.easeInOut(duration: 0.5)) {
             for i in currentCards.indices {
-                currentCards[i].offsetX = UIScreen.main.bounds.width * (i == 0 ? 1 : -1) * 1.5
+                currentCards[i].offsetY = UIScreen.main.bounds.height * 1.5
             }
         }
         
         // Após a animação, sorteia novas cartas
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
             for i in self.currentCards.indices {
-                self.currentCards[i].offsetX = 0  // Reseta o offset
+                self.currentCards[i].offsetY = 0  // Reseta o deslocamento vertical
             }
             self.drawNewCards()
         }
     }
+
 
 
 

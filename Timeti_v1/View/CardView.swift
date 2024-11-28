@@ -62,8 +62,8 @@ struct CircularCardView: View {
             }
         }
         .frame(width: 300, height: 300)
-        .offset(x: card.offsetX, y: 0)  // Permite animação de saída
-        .animation(.easeInOut(duration: 0.5), value: card.offsetX)  // Animação de entrada e saída
+        .offset(x: card.offsetY, y: 0)  // Permite animação de saída
+        .animation(.easeInOut(duration: 0.5), value: card.offsetY)  // Animação de entrada e saída
     }
     
     // Calcula a posição dos elementos na disposição circular
