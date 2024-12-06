@@ -11,34 +11,62 @@ struct ContentView: View {
     var body: some View {
         NavigationView {  // Isso permite a navegação entre as views
             ZStack {
-                Color(red: 0.812, green: 0.847, blue: 0.894) // Fundo mais claro
+                Constants.backgroundColor
                     .ignoresSafeArea()
+                
+                VStack{
+                    Image("padraoCima")
+                        .frame(width: 390, height: 420)
+                        .scaledToFit()
+                    Spacer()
+                    Image("padraoBaixo")
+                        .frame(width: 390, height: 440)
+                        .scaledToFit()
+                }
+                
+                
                 
                 VStack(spacing: 10) {
                     Spacer()
                     
-                    Image("timeti")
-                        .resizable()  // Permite que a imagem seja redimensionada
-                        .frame(width: 400, height: 200)  // Define o tamanho desejado
+                    Image("timetiColorido")
+                        .frame(width: 390, height: 170)
                         .scaledToFit()
+             
                     
-                    Spacer()
-                }
-                .padding(.top, 20)
-                
-                VStack {
-                    Spacer()
                     
                     NavigationLink(destination: GameView()) {
                         Text("Jogar")
-                            .font(.system(size: 24, weight: .bold))  // Tamanho e peso personalizados
+                            .font(.system(size: 34, weight: .bold))
                             .padding()
-                            .frame(width: 300, height: 50)  // Define o tamanho do botão
-                            .background(Color(red: 0.176, green: 0.361, blue: 0.667)) // Cor personalizada
-                            .foregroundColor(.white)  // Cor do texto
-                            .cornerRadius(10)  // Bordas arredondadas
+                            .frame(width: 330, height: 64)
+                            .background(Color("buttonColor"))
+                            .foregroundColor(.white)
+                            .cornerRadius(100)
+                            .overlay(  // Adiciona a borda
+                                RoundedRectangle(cornerRadius: 100)
+                                    .stroke(Color("whiteColor"), lineWidth: 4)
+                            )
                     }
-                    .padding(.bottom, 25)  // Espaço entre o botão e a borda inferior
+                    .padding(.bottom, 15)
+                    
+                    NavigationLink(destination: TutorialView()) {
+                        Text("Tutorial")
+                            .font(.system(size: 34, weight: .bold))
+                            .padding()
+                            .frame(width: 330, height: 64)
+                            .background(Color("whiteColor"))
+                            .foregroundColor(Color("buttonColor"))
+                            .cornerRadius(100)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 100)
+                                    .stroke(Color("buttonColor"), lineWidth: 4) 
+                            )
+                    }
+                    .padding(.bottom, 50)
+                    
+                    Spacer()
+
                 }
             }
         }

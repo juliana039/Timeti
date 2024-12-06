@@ -89,9 +89,10 @@ class GameViewModel: ObservableObject {
     
     func incrementScore(for index: Int) {
         if index == 0 {  // Carta da direita
-            rightScore += 1
-        } else if index == 1 {  // Carta da esquerda
             leftScore += 1
+        } else if index == 1 {  // Carta da esquerda
+            rightScore += 1
+
         }
         
         // Anima a saída das cartas para baixo
