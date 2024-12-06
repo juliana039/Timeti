@@ -19,7 +19,11 @@ struct GameView: View {
         ZStack {
             Constants.backgroundColor
                 .ignoresSafeArea()
-                .blur(radius: showWinnerAnimation ? 10 : 0) // Fundo com blur ao finalizar
+                //.blur(radius: showWinnerAnimation ? 10 : 0) // Fundo com blur ao finalizar
+            Image("padraoBack")
+                .resizable()
+                .scaledToFill()
+                //.frame(width: 200, height: 200)
             
             if showWinnerAnimation {
                 ZStack {
@@ -61,11 +65,16 @@ struct GameView: View {
                                 .background(Color("buttonColor"))
                                 .foregroundColor(.white)
                                 .cornerRadius(100)
-                        }
+                                .overlay(  // Adiciona a borda
+                                    RoundedRectangle(cornerRadius: 100)
+                                        .stroke(Color("whiteColor"), lineWidth: 4)
+                                )
+                        }.padding(.bottom, 40)
                     }
-                    .rotationEffect(winnerSide == "Baixo" ? .degrees(180) : .degrees(0)) // Rotaciona para "Baixo"
+                    .rotationEffect(winnerSide == "Baixo" ? .degrees(180) : winnerSide == "Empate" ? .degrees(-90) : .degrees(0)) // Rotaciona para "Baixo" ou lateral no empate
                 }
-            } else {
+            }
+else {
                 ZStack {
                     VStack {
                         PlacarView(viewModel: viewModel)
@@ -86,7 +95,7 @@ struct GameView: View {
                                 }
                             )
                             .rotationEffect(.degrees(180))
-                            .offset(y: -UIScreen.main.bounds.height * 0.27)
+                            .offset(y: -UIScreen.main.bounds.height * 0.24)
                         }
                         
                         TimerView(viewModel: timerViewModel) // Compartilha o mesmo ViewModel
@@ -103,7 +112,7 @@ struct GameView: View {
                                 }
                             )
                             .rotationEffect(.degrees(0))
-                            .offset(y: UIScreen.main.bounds.height * 0.27)
+                            .offset(y: UIScreen.main.bounds.height * 0.24)
                         }
                     }
                 }

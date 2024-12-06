@@ -29,7 +29,8 @@ struct ContentView: View {
                 VStack(spacing: 10) {
                     Spacer()
                     
-                    Image("timetiColorido")
+                    Image("colorido")
+                        .resizable()
                         .frame(width: 390, height: 170)
                         .scaledToFit()
              
