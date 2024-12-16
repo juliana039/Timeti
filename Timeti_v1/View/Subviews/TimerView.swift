@@ -36,8 +36,8 @@ struct TimerView: View {
         .padding()
     }
 }
-
-
-#Preview {
-    TutorialView()
-}
+//
+//
+//#Preview {
+//    TutorialView()
+//}

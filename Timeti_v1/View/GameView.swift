@@ -11,6 +11,8 @@ struct GameView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var viewModel = GameViewModel()
     @StateObject private var timerViewModel = TimerViewModel() // Instanciado uma vez
+    @State private var empateRotationAngle: Double = 0
+
     
     @State private var showWinnerAnimation = false // Controla a exibição da animação de vitória
     @State private var winnerSide: String = "" // Lado vencedor ("Cima", "Baixo" ou "Empate")
@@ -33,15 +35,26 @@ struct GameView: View {
                     VStack(spacing: 20) {
                         if winnerSide == "Empate" {
                             // Conteúdo para empate
-                            Image("empate")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 200, height: 200)
-                            
-                            Text("Empate! Que tal uma revanche?")
-                                .font(.title)
-                                .foregroundColor(.white)
-                                .padding(.bottom, 50)
+                            Button(action: {
+                                resetGame() // Reinicia o jogo e o cronômetro
+                            }) {
+                                Image("empate")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 200, height: 200)
+                                    .rotationEffect(.degrees(empateRotationAngle))
+                                    .onAppear {
+                                        withAnimation(
+                                            Animation.linear(duration: 5) // Aumente a duração para girar mais devagar
+                                                .repeatForever(autoreverses: false)
+                                        ) {
+                                            empateRotationAngle = 360 // Rotaciona continuamente
+                                        }
+                                    }
+                            }
+
+                           
+                                    
                         } else {
                             // Conteúdo para vitória
                             Image("parabens")
@@ -53,23 +66,25 @@ struct GameView: View {
                                 .font(.title)
                                 .foregroundColor(.white)
                                 .padding(.bottom, 50)
+                            
+                            Button(action: {
+                                resetGame() // Reinicia o jogo e o cronômetro
+                            }) {
+                                Text("Reiniciar")
+                                    .font(.title)
+                                    .padding()
+                                    .frame(width: 330, height: 64)
+                                    .background(Color("buttonColor"))
+                                    .foregroundColor(.white)
+                                    .cornerRadius(100)
+                                    .overlay(  // Adiciona a borda
+                                        RoundedRectangle(cornerRadius: 100)
+                                            .stroke(Color("whiteColor"), lineWidth: 4)
+                                    )
+                            }.padding(.bottom, 40)
                         }
                         
-                        Button(action: {
-                            resetGame() // Reinicia o jogo e o cronômetro
-                        }) {
-                            Text("Reiniciar")
-                                .font(.title)
-                                .padding()
-                                .frame(width: 330, height: 64)
-                                .background(Color("buttonColor"))
-                                .foregroundColor(.white)
-                                .cornerRadius(100)
-                                .overlay(  // Adiciona a borda
-                                    RoundedRectangle(cornerRadius: 100)
-                                        .stroke(Color("whiteColor"), lineWidth: 4)
-                                )
-                        }.padding(.bottom, 40)
+                       
                     }
                     .rotationEffect(winnerSide == "Baixo" ? .degrees(180) : winnerSide == "Empate" ? .degrees(-90) : .degrees(0)) // Rotaciona para "Baixo" ou lateral no empate
                 }

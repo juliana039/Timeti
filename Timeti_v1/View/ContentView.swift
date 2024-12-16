@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    @AppStorage("hasSeenTutorial") private var hasSeenTutorial: Bool = false
+    @State private var navigateToGameView: Bool = false // Controle para GameView
+    @State private var navigateToTutorialView: Bool = false // Controle para TutorialView
+
     var body: some View {
-        NavigationView {  // Isso permite a navegação entre as views
+        NavigationStack {
             ZStack {
                 Constants.backgroundColor
                     .ignoresSafeArea()
-                
-                VStack{
+
+                VStack {
                     Image("padraoCima")
                         .frame(width: 390, height: 420)
                         .scaledToFit()
@@ -23,20 +27,23 @@ struct ContentView: View {
                         .frame(width: 390, height: 440)
                         .scaledToFit()
                 }
-                
-                
-                
+
                 VStack(spacing: 10) {
                     Spacer()
-                    
+
                     Image("colorido")
                         .resizable()
                         .frame(width: 390, height: 170)
                         .scaledToFit()
-             
-                    
-                    
-                    NavigationLink(destination: GameView()) {
+
+                    // Botão "Jogar"
+                    Button(action: {
+                        if hasSeenTutorial {
+                            navigateToGameView = true
+                        } else {
+                            navigateToTutorialView = true
+                        }
+                    }) {
                         Text("Jogar")
                             .font(.system(size: 34, weight: .bold))
                             .padding()
@@ -44,14 +51,15 @@ struct ContentView: View {
                             .background(Color("buttonColor"))
                             .foregroundColor(.white)
                             .cornerRadius(100)
-                            .overlay(  // Adiciona a borda
+                            .overlay(
                                 RoundedRectangle(cornerRadius: 100)
                                     .stroke(Color("whiteColor"), lineWidth: 4)
                             )
                     }
                     .padding(.bottom, 15)
-                    
-                    NavigationLink(destination: TutorialView()) {
+
+                    // Botão "Tutorial"
+                    NavigationLink(destination: TutorialView(isNavigatingToGame: $navigateToGameView)) {
                         Text("Tutorial")
                             .font(.system(size: 34, weight: .bold))
                             .padding()
@@ -61,18 +69,25 @@ struct ContentView: View {
                             .cornerRadius(100)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 100)
-                                    .stroke(Color("buttonColor"), lineWidth: 4) 
+                                    .stroke(Color("buttonColor"), lineWidth: 4)
                             )
                     }
                     .padding(.bottom, 50)
-                    
-                    Spacer()
 
+                    Spacer()
                 }
+            }
+            .navigationDestination(isPresented: $navigateToGameView) {
+                GameView()
+            }
+            .navigationDestination(isPresented: $navigateToTutorialView) {
+                TutorialView(isNavigatingToGame: $navigateToGameView)
             }
         }
     }
 }
+
+
 
 #Preview {
     ContentView()

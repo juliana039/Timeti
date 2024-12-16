@@ -12,7 +12,7 @@ class TimerViewModel: ObservableObject {
     @Published var progress: CGFloat = 0.0
     @Published var isFinished: Bool = false // Indica quando o timer termina
     private var timer: Timer?
-    private let totalTime: CGFloat = 6.0 // Tempo total em segundos
+    private let totalTime: CGFloat = 30.0 // Tempo total em segundos
     private var currentTime: CGFloat = 0.0
     
     init() {
